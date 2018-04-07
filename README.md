@@ -47,7 +47,6 @@ Will output the following:
 />
 ```
 
-
 ### Native Rails image_tag options
 If you want to provide native `image_url` helper options just add them to the end of the helper:
 ```ruby
@@ -80,6 +79,23 @@ https://service.imageboss.me/width/100/https://assets.mywebsite.com/assets/my-ni
   background-image: url(<%= imageboss_url('a-nice-profile.svg', :cover, { width: 400, height: 300 }) %>);
 }
 ```
+
+### Disable ImageBoss URL on specific environments
+If on `development` or `test` environment you are not sending images to the cloud you can disable the generation of ImageBoss URLs for thos environment. For example, if you want to disable on `development`, just add the following to your `config/environments/development.rb` file.
+
+```ruby
+config.imageboss.enabled = false
+```
+With this configured in all places you call `imageboss_url` or `imageboss_tag` the `src` or the `url` generated will fallback straight to your localhost images. For example instead of generating this URL:
+```
+https://service.imageboss.me/cover/100x100/https://assets.mywebsite.com/assets/my-nice-image.jpg
+```
+it will output this:
+```
+http://localhost:3000/assets/my-nice-image.jpg
+```
+This is nice because you won't need to add any extra code to handle this yourself.
+
 ## Compatibility
 Rails
   - 5
