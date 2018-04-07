@@ -12,3 +12,6 @@ gemspec
 
 # To use a debugger
 gem 'byebug', group: [:development, :test]
+
+# Added at 2018-04-07 16:27:35 +0100 by igorescobar:
+gem "sass-rails", "~> 5.0"

@@ -14,8 +14,6 @@ module Dummy
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
 
-    config.imageboss = {
-      asset_host: 'https://mywebsite.com'
-    }
+    config.imageboss.asset_host = 'https://mywebsite.com'
   end
 end

@@ -51,4 +51,8 @@ Rails.application.configure do
   # Use an evented file watcher to asynchronously detect changes in source code,
   # routes, locales, etc. This feature depends on the listen gem.
   # config.file_watcher = ActiveSupport::EventedFileUpdateChecker
+
+  # In case you dont want imageboss URLs to be generated on this environment
+  # You can fallback to the original behaviour
+  # config.imageboss.enabled = false
 end

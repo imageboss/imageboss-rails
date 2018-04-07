@@ -15,11 +15,11 @@ class ImageBoss::Rails::ViewHelper::Test < ActiveSupport::TestCase
     source = ->() { 'https://mywebsite.com' }
 
     ImageBoss::Rails.configure do |config|
-      config.imageboss = { assets_host: source.call }
+      config.imageboss = { asset_host: source.call }
     end
 
     image_tag = helper.call.imageboss_tag('/assets/nice.jpg', :cover, { width: 100, height: 100 })
 
-    assert_equal(image_tag, '<img src="https://service.imageboss.me/cover/100x100/https://mywebsite.com/assets/nice.jpg" alt="Nice" />')
+    assert_equal('<img src="https://service.imageboss.me/cover/100x100/https://mywebsite.com/assets/nice.jpg" alt="Nice" />', image_tag)
   end
 end

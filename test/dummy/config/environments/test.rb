@@ -39,4 +39,8 @@ Rails.application.configure do
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
+
+  # In case you dont want imageboss URLs to be generated on this environment
+  # You can fallback to the original behaviour
+  # config.imageboss.enabled = false
 end

@@ -15,10 +15,7 @@ module ImageBoss
         end
 
         ActionView::Base.send :include, ViewHelper
-
-        if defined? Sprockets
-          Sprockets::Context.send :include, UrlHelper
-        end
+        Sprockets::Context.send :include, UrlHelper if defined? Sprockets
       end
     end
   end
