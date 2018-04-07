@@ -135,7 +135,7 @@ DEPENDENCIES
   byebug
   imageboss-rails!
   sass-rails (~> 5.0)
-  sqlite3 (~> 0)
+  sqlite3
 
 BUNDLED WITH
    1.16.0
