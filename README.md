@@ -5,7 +5,7 @@ Official Gem for generating ImageBoss URLs with Ruby On Rails
 [https://imageboss.me/](https://imageboss.me/)
 
 ## Usage
-...
+WIP!
 
 ## Installation
 Add this line to your application's Gemfile:
