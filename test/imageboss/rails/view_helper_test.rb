@@ -11,7 +11,6 @@ class ImageBoss::Rails::ViewHelper::Test < ActiveSupport::TestCase
   }
 
   test 'view_helper#imageboss_tag' do
-    app = ->() { Class.new(::Rails::Application) }
     source = ->() { 'https://mywebsite.com' }
 
     ImageBoss::Rails.configure do |config|

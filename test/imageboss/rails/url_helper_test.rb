@@ -3,7 +3,6 @@ require 'action_view'
 require 'imageboss/rails/view_helper'
 
 class ImageBoss::Rails::UrlHelper::Test < ActiveSupport::TestCase
-
   helper = ->() {
     Class.new do
       include ImageBoss::Rails::ViewHelper
@@ -13,11 +12,13 @@ class ImageBoss::Rails::UrlHelper::Test < ActiveSupport::TestCase
 
   source = ->() { 'https://mywebsite.com' }
 
-  ImageBoss::Rails.configure do |config|
-    config.imageboss = {
-      asset_host: source.call,
-      enabled: true
-    }
+  setup do
+    ImageBoss::Rails.configure do |config|
+      config.imageboss = {
+        asset_host: source.call,
+        enabled: true
+      }
+    end
   end
 
   test '#url_helper' do

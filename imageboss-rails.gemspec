@@ -14,10 +14,10 @@ Gem::Specification.new do |s|
   s.description = 'Official Ruby On Rails gem for generating ImageBoss URLs'
   s.license     = 'MIT'
 
+  s.test_files  = s.files.grep(%r{^(test|spec|features)/})
+
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
 
-  s.add_dependency 'rails', '~> 5.1.6'
+  s.add_dependency 'rails', '~> 5.0'
   s.add_dependency 'imageboss-rb', '~> 1.0.1'
-
-  s.add_development_dependency 'sqlite3', '~> 0'
 end
