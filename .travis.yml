@@ -8,7 +8,6 @@ before_install:
 script:
   - bin/test
 rvm:
-  - 2.5.1
   - 2.4.4
   - 2.3.7
   - 2.2.7
