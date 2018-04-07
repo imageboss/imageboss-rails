@@ -14,7 +14,8 @@ We recommend using something like [Paperclip](https://github.com/thoughtbot/pape
 - [Installation](#installation)
 - [Usage](#usage)
   - [Configuration](#configuration)
-    - [Same configuration across all environemnts](#same-configuration-across-all-environemnts)
+    - [Same configuration across all environments](#same-configuration-across-all-environments)
+    - [Environment specific configuration](#environment-specific-configuration)
   - [imageboss_tag](#imageboss_tag)
   - [Native Rails image_tag options](#native-rails-image_tag-options)
   - [imageboss_url](#imageboss_url)
@@ -37,14 +38,22 @@ $ gem install imageboss-rails
 `imageboss-rails` provide you a few helpers to make the integration easier. To know all operations and options available please read the [ImageBoss Docs](https://imageboss.me/docs).
 
 ### Configuration
-#### Same configuration across all environemnts
-Just add the following to `app/config/application.rb`:
+#### Same configuration across all environments
+Just add the following to `config/application.rb`:
 
 ```ruby
 Rails.application.configure do
   config.imageboss.source = "https://assets.mywebsite.com"
 end
 ```
+#### Environment specific configuration
+Just add the following to `config/environments/production.rb`:
+```ruby
+Rails.application.configure do
+  config.imageboss.source = "https://prod-assets.mywebsite.com"
+end
+```
+
 
 ### imageboss_tag
 Just like the Rails' [image_tag](https://apidock.com/rails/ActionView/Helpers/AssetTagHelper/image_tag) it will generate an `<img>` tag for you - but wrapped by the ImageBoss gem adding some more functionalities. The syntax is the following:
