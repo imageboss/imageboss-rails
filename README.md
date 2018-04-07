@@ -10,6 +10,19 @@ to offer rails specific features.
 
 We recommend using something like [Paperclip](https://github.com/thoughtbot/paperclip), [Refile](https://github.com/refile/refile), [Carrierwave](https://github.com/carrierwaveuploader/carrierwave), or [s3_direct_upload](https://github.com/waynehoover/s3_direct_upload) to handle uploads and make them available. After they've been uploaded, you can then serve them using this gem or you can't disable ImageBoss for spacific environments. Read on.
 
+**Table of Contents**
+- [ImageBoss Helper for Ruby On Rails](#imageboss-helper-for-ruby-on-rails)
+  - [Installation](#installation)
+  - [Usage](#usage)
+    - [Configuration](#configuration)
+      - [Same configuration across all environemnts](#same-configuration-across-all-environemnts)
+    - [imageboss_tag](#imageboss_tag)
+    - [Native Rails image_tag options](#native-rails-image_tag-options)
+    - [imageboss_url](#imageboss_url)
+    - [Usage in Sprockets](#usage-in-sprockets)
+    - [Disable ImageBoss URL on specific environments](#disable-imageboss-url-on-specific-environments)
+  - [Compatibility](#compatibility)
+
 ## Installation
 Just run the following:
 ```bash
