@@ -80,3 +80,19 @@ https://service.imageboss.me/width/100/https://assets.mywebsite.com/assets/my-ni
   background-image: url(<%= imageboss_url('a-nice-profile.svg', :cover, { width: 400, height: 300 }) %>);
 }
 ```
+## Compatibility
+Rails
+  - 5
+  - 4
+
+Ruby
+  - 2.4.x
+  - 2.3.x
+  - 2.2.x
+  - 2.1.x
+
+jRuby
+  - jruby-9.0.5.x
+
+Rubinius
+  - rbx-3.x
