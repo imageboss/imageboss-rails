@@ -3,7 +3,7 @@
 # ImageBoss Helper for Ruby On Rails
 [![Build Status](https://travis-ci.org/imageboss/imageboss-rails.svg?branch=master)](https://travis-ci.org/imageboss/imageboss-rails) [![Gem Version](https://badge.fury.io/rb/imageboss-rails.svg)](https://badge.fury.io/rb/imageboss-rails)
 
-Official Gem for generating ImageBoss URLs with Ruby On Rails. It's built on top of [imageboss-rb](https://github.com/imageboss/imageboss-rails)
+Official Gem for generating ImageBoss URLs with Ruby On Rails. It's built on top of [imageboss-rb](https://github.com/imageboss/imageboss-rb)
 to offer rails specific features.
 
 [ImageBoss](https://imageboss.me/) is a service designed to handle on-demand image processing with content aware recognition, progressive scans, compression, CDN and more.
