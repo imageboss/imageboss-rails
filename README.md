@@ -43,14 +43,14 @@ Just add the following to `config/application.rb`:
 
 ```ruby
 Rails.application.configure do
-  config.imageboss.source = "https://assets.mywebsite.com"
+  config.imageboss.asset_host = "https://assets.mywebsite.com"
 end
 ```
 #### Environment specific configuration
 Just add the following to `config/environments/production.rb`:
 ```ruby
 Rails.application.configure do
-  config.imageboss.source = "https://prod-assets.mywebsite.com"
+  config.imageboss.asset_host = "https://prod-assets.mywebsite.com"
 end
 ```
 
