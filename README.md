@@ -1,4 +1,4 @@
-[![ImageBoss logo](https://service.imageboss.me/width/180/https://imageboss.me/emails/logo-2@2x.png)](https://imageboss.me)
+[![ImageBoss logo](https://img.imageboss.me/width/180/https://imageboss.me/emails/logo-2@2x.png)](https://imageboss.me)
 
 # ImageBoss Helper for Ruby On Rails
 [![Build Status](https://travis-ci.org/imageboss/imageboss-rails.svg?branch=master)](https://travis-ci.org/imageboss/imageboss-rails) [![Gem Version](https://badge.fury.io/rb/imageboss-rails.svg)](https://badge.fury.io/rb/imageboss-rails)
@@ -64,7 +64,7 @@ Will output the following:
 ```html
 <img
   alt="my-nice-image"
-  src="https://service.imageboss.me/cover/100x100/https://assets.mywebsite.com/assets/my-nice-image.jpg"
+  src="https://img.imageboss.me/cover/100x100/https://assets.mywebsite.com/assets/my-nice-image.jpg"
 />
 ```
 
@@ -77,7 +77,7 @@ Will output the following:
 ```html
 <img
   alt="Sunny Lisbon!"
-  src="https://service.imageboss.me/cover/100x100/https://assets.mywebsite.com/assets/my-nice-image.jpg"
+  src="https://img.imageboss.me/cover/100x100/https://assets.mywebsite.com/assets/my-nice-image.jpg"
 />
 ```
 
@@ -88,7 +88,7 @@ Just like Rails' [asset_url](https://apidock.com/rails/ActionView/Helpers/AssetU
 ```
 Will output the following:
 ```
-https://service.imageboss.me/width/100/https://assets.mywebsite.com/assets/my-nice-image.jpg
+https://img.imageboss.me/width/100/https://assets.mywebsite.com/assets/my-nice-image.jpg
 ```
 
 ### Usage in Sprockets
@@ -109,7 +109,7 @@ config.imageboss.enabled = false
 ```
 With this configured in all places you call `imageboss_url` or `imageboss_tag` the `src` or the `url` generated will fallback straight to your localhost images. For example instead of generating this URL:
 ```
-https://service.imageboss.me/cover/100x100/https://assets.mywebsite.com/assets/my-nice-image.jpg
+https://img.imageboss.me/cover/100x100/https://assets.mywebsite.com/assets/my-nice-image.jpg
 ```
 it will output this:
 ```

@@ -19,6 +19,6 @@ class ImageBoss::Rails::ViewHelper::Test < ActiveSupport::TestCase
 
     image_tag = helper.call.imageboss_tag('/assets/nice.jpg', :cover, { width: 100, height: 100 })
 
-    assert_equal('<img src="https://service.imageboss.me/cover/100x100/https://mywebsite.com/assets/nice.jpg" alt="Nice" />', image_tag)
+    assert_equal('<img src="https://img.imageboss.me/cover/100x100/https://mywebsite.com/assets/nice.jpg" alt="Nice" />', image_tag)
   end
 end
