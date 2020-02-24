@@ -12,5 +12,5 @@ gemspec
 
 # To use a debugger
 gem 'byebug', group: [:development, :test]
-gem 'sqlite3', '~> 1.3.11', group: [:development, :test]
-gem 'sass-rails', '~> 5.0.7'
+gem 'sqlite3', '~> 1.3', '<= 1.4.2', group: [:development, :test]
+gem 'sass-rails', '~> 5.0.7', group: [:development, :test]

@@ -18,6 +18,19 @@ Gem::Specification.new do |s|
 
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
 
-  s.add_dependency 'rails', '~> 5.0'
+
   s.add_dependency 'imageboss-rb', '~> 1.0.2'
+
+  rails_version = ENV["RAILS_VERSION"] || "default"
+
+  rails = case rails_version
+  when "master"
+    {github: "rails/rails"}
+  when "default"
+    ">= 6.0.2"
+  else
+    "~> #{rails_version}"
+  end
+
+  s.add_dependency 'rails', rails
 end
