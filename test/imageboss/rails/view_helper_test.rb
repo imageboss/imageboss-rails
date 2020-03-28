@@ -19,5 +19,8 @@ class ImageBoss::Rails::ViewHelper::Test < ActiveSupport::TestCase
 
     image_tag = helper.call.imageboss_tag('/assets/nice.jpg', :cover, { width: 100, height: 100 })
     assert_match('https://img.imageboss.me/mywebsite/cover/100x100/assets/nice.jpg', image_tag)
+
+    image_tag = helper.call.imageboss_tag('/assets/nice.jpg', :cover, { width: 100, height: 100, options: { blur: 2 } })
+    assert_match('https://img.imageboss.me/mywebsite/cover/100x100/blur:2/assets/nice.jpg', image_tag)
   end
 end

@@ -73,13 +73,13 @@ Will output the following:
 ### Native Rails image_tag options
 If you want to provide native `image_url` helper options just add them to the end of the helper:
 ```ruby
-<%= imageboss_tag('my-nice-image', :cover, { width: 100, height: 100 }, alt: "Sunny Lisbon!") %>
+<%= imageboss_tag('my-nice-image', :cover, { width: 100, height: 100, options: { blur: 2 } }, alt: "Sunny Lisbon!") %>
 ```
 Will output the following:
 ```html
 <img
   alt="Sunny Lisbon!"
-  src="https://img.imageboss.me/mywebsite-assets/cover/100x100/assets/my-nice-image.jpg"
+  src="https://img.imageboss.me/mywebsite-assets/cover/100x100/blur:2/assets/my-nice-image.jpg"
 />
 ```
 
