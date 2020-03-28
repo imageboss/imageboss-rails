@@ -10,12 +10,12 @@ class ImageBoss::Rails::UrlHelper::Test < ActiveSupport::TestCase
     end.new
   }
 
-  source = ->() { 'https://mywebsite.com' }
+  source = ->() { 'mywebsite' }
 
   setup do
     ImageBoss::Rails.configure do |config|
       config.imageboss = {
-        asset_host: source.call,
+        source: source.call,
         enabled: true
       }
     end
@@ -26,6 +26,6 @@ class ImageBoss::Rails::UrlHelper::Test < ActiveSupport::TestCase
       '/assets/nice.jpg', :cover, { width: 100, height: 100 }
     )
 
-    assert_equal('https://img.imageboss.me/cover/100x100/https://mywebsite.com/assets/nice.jpg', url)
+    assert_equal('https://img.imageboss.me/mywebsite/cover/100x100/assets/nice.jpg', url)
   end
 end

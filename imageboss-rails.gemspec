@@ -19,7 +19,7 @@ Gem::Specification.new do |s|
   s.files = Dir['{app,config,db,lib}/**/*', 'MIT-LICENSE', 'Rakefile', 'README.md']
 
 
-  s.add_dependency 'imageboss-rb', '~> 1.0.2'
+  s.add_dependency 'imageboss-rb', '~> 2.0.0'
 
   rails_version = ENV["RAILS_VERSION"] || "default"
 

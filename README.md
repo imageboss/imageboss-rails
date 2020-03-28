@@ -11,17 +11,19 @@ to offer rails specific features.
 We recommend using something like [Paperclip](https://github.com/thoughtbot/paperclip), [Refile](https://github.com/refile/refile), [Carrierwave](https://github.com/carrierwaveuploader/carrierwave), or [s3_direct_upload](https://github.com/waynehoover/s3_direct_upload) to handle uploads and make them available. After they've been uploaded, you can then serve them using this gem or you can't disable ImageBoss for spacific environments. Read on.
 
 **Table of Contents**
-- [Installation](#installation)
-- [Usage](#usage)
-  - [Configuration](#configuration)
-    - [Same configuration across all environments](#same-configuration-across-all-environments)
-    - [Environment specific configuration](#environment-specific-configuration)
-  - [imageboss_tag](#imageboss_tag)
-  - [Native Rails image_tag options](#native-rails-image_tag-options)
-  - [imageboss_url](#imageboss_url)
-  - [Usage in Sprockets](#usage-in-sprockets)
-  - [Disable ImageBoss URL on specific environments](#disable-imageboss-url-on-specific-environments)
-- [Compatibility](#compatibility)
+- [ImageBoss Helper for Ruby On Rails](#imageboss-helper-for-ruby-on-rails)
+  - [Installation](#installation)
+  - [Usage](#usage)
+    - [Configuration](#configuration)
+      - [Same configuration across all environments](#same-configuration-across-all-environments)
+      - [Environment specific configuration](#environment-specific-configuration)
+    - [imageboss_tag](#imagebosstag)
+    - [Native Rails image_tag options](#native-rails-imagetag-options)
+    - [imageboss_url](#imagebossurl)
+    - [Usage in Sprockets](#usage-in-sprockets)
+    - [Disable ImageBoss URL on specific environments](#disable-imageboss-url-on-specific-environments)
+  - [Compatibility](#compatibility)
+  - [Developer](#developer)
 
 ## Installation
 Just run the following:
@@ -43,14 +45,14 @@ Just add the following to `config/application.rb`:
 
 ```ruby
 Rails.application.configure do
-  config.imageboss.asset_host = "https://assets.mywebsite.com"
+  config.imageboss.source = "mywebsite-assets"
 end
 ```
 #### Environment specific configuration
 Just add the following to `config/environments/production.rb`:
 ```ruby
 Rails.application.configure do
-  config.imageboss.asset_host = "https://prod-assets.mywebsite.com"
+  config.imageboss.source = "mywebsite-assets-prod"
 end
 ```
 
@@ -64,7 +66,7 @@ Will output the following:
 ```html
 <img
   alt="my-nice-image"
-  src="https://img.imageboss.me/cover/100x100/https://assets.mywebsite.com/assets/my-nice-image.jpg"
+  src="https://img.imageboss.me/mywebsite-assets/cover/100x100/assets/my-nice-image.jpg"
 />
 ```
 
@@ -77,7 +79,7 @@ Will output the following:
 ```html
 <img
   alt="Sunny Lisbon!"
-  src="https://img.imageboss.me/cover/100x100/https://assets.mywebsite.com/assets/my-nice-image.jpg"
+  src="https://img.imageboss.me/mywebsite-assets/cover/100x100/assets/my-nice-image.jpg"
 />
 ```
 
@@ -88,7 +90,7 @@ Just like Rails' [asset_url](https://apidock.com/rails/ActionView/Helpers/AssetU
 ```
 Will output the following:
 ```
-https://img.imageboss.me/width/100/https://assets.mywebsite.com/assets/my-nice-image.jpg
+https://img.imageboss.me/mywebsite-assets/width/100/assets/my-nice-image.jpg
 ```
 
 ### Usage in Sprockets
@@ -109,7 +111,7 @@ config.imageboss.enabled = false
 ```
 With this configured in all places you call `imageboss_url` or `imageboss_tag` the `src` or the `url` generated will fallback straight to your localhost images. For example instead of generating this URL:
 ```
-https://img.imageboss.me/cover/100x100/https://assets.mywebsite.com/assets/my-nice-image.jpg
+https://img.imageboss.me/mywebsite-assets/cover/100x100/assets/my-nice-image.jpg
 ```
 it will output this:
 ```
@@ -119,10 +121,12 @@ This is nice because you won't need to add any extra code to handle this yoursel
 
 ## Compatibility
 Rails
+  - 6
   - 5
   - 4
 
 Ruby
+  - 2.6.x
   - 2.4.x
   - 2.3.x
   - 2.2.x
@@ -133,3 +137,10 @@ jRuby
 
 Rubinius
   - rbx-3.x
+
+
+## Developer
+To run the tests:
+```
+./bin/test
+```
