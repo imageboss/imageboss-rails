@@ -1,4 +1,4 @@
-[![ImageBoss logo](https://img.imageboss.me/width/180/https://imageboss.me/emails/logo-2@2x.png)](https://imageboss.me)
+[![ImageBoss logo](https://img.imageboss.me/boss-images/width/180/emails/logo-2@2x.png)](https://imageboss.me)
 
 # ImageBoss Helper for Ruby On Rails
 [![Build Status](https://travis-ci.org/imageboss/imageboss-rails.svg?branch=master)](https://travis-ci.org/imageboss/imageboss-rails) [![Gem Version](https://badge.fury.io/rb/imageboss-rails.svg)](https://badge.fury.io/rb/imageboss-rails)
@@ -17,6 +17,7 @@ We recommend using something like [Paperclip](https://github.com/thoughtbot/pape
     - [Configuration](#configuration)
       - [Same configuration across all environments](#same-configuration-across-all-environments)
       - [Environment specific configuration](#environment-specific-configuration)
+    - [Signing your URLs](#signing-your-urls)
     - [imageboss_tag](#imagebosstag)
     - [Native Rails image_tag options](#native-rails-imagetag-options)
     - [imageboss_url](#imagebossurl)
@@ -56,6 +57,15 @@ Rails.application.configure do
 end
 ```
 
+### Signing your URLs
+Read more about this feature here:
+https://www.imageboss.me/docs/security
+
+```ruby
+Rails.application.configure do
+  config.imageboss.secret = "<MY_SECRET>"
+end
+```
 
 ### imageboss_tag
 Just like the Rails' [image_tag](https://apidock.com/rails/ActionView/Helpers/AssetTagHelper/image_tag) it will generate an `<img>` tag for you - but wrapped by the ImageBoss gem adding some more functionalities. The syntax is the following:
