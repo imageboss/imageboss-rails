@@ -16,7 +16,9 @@ module ImageBoss
         config = ::ImageBoss::Rails.config.imageboss || {}
         client_options = {}
         client_options[:source] = config[:source]
+        client_options[:secret] = config[:secret] || false
         client_options[:enabled] = config[:enabled] unless config[:enabled].nil?
+
         @imageboss_client = ::ImageBoss::Client.new(**client_options)
       end
     end
