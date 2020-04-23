@@ -21,6 +21,6 @@ class ImageBoss::Rails::UrlHelper::Test < ActiveSupport::TestCase
       '/assets/nice.jpg', :cover, { width: 100, height: 100 }
     )
 
-    assert_equal('https://img.imageboss.me/mywebsite/cover/100x100/assets/nice.jpg?bossToken=45ca1d7fc3adb066fb8114ef87e8a9ee03ef35fde138e4e579d2a6fd45fe887d', url)
+    assert_equal('https://img.imageboss.me/mywebsite/cover/100x100/assets/nice.jpg?bossToken=d57ed7d86ca51e01afb0b7cc28d548bde6ed394f4a0c0618d2dc9cec21dd7c92', url)
   end
 end
