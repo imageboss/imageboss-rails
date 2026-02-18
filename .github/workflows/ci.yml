@@ -36,5 +36,9 @@ jobs:
           ruby-version: ${{ matrix.ruby }}
           bundler-cache: true
 
+      - name: Prepare test database
+        run: |
+          cd test/dummy && bundle exec rake db:test:prepare 2>/dev/null || true
+
       - name: Run tests
         run: bin/test

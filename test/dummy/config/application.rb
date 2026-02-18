@@ -16,5 +16,10 @@ module Dummy
 
     config.imageboss.source = 'mywebsite-assets'
     config.imageboss.asset_host = 'https://mywebsite.com'
+
+    # Silence SQLite boolean serialization deprecation (Rails 5.2+)
+    if config.active_record.respond_to?(:sqlite3)
+      config.active_record.sqlite3.represent_boolean_as_integer = true if config.active_record.sqlite3.respond_to?(:represent_boolean_as_integer=)
+    end
   end
 end
