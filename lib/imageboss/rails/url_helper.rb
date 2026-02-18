@@ -11,7 +11,10 @@ module ImageBoss
       # @param options [Hash] operation options (e.g. width:, height:, options: { blur: 2 })
       # @param source [String, nil] optional source name when using config.imageboss.sources
       # @return [String] ImageBoss URL, or fallback URL when disabled
-      def imageboss_url(path, operation, options = {}, source: nil)
+      # Ruby 2.7: a trailing hash can be passed as keyword args; **opts absorbs them so options stay a hash.
+      def imageboss_url(path, operation, options = {}, source: nil, **opts)
+        source = opts.delete(:source) if opts.key?(:source)
+        options = options.merge(opts) if opts.any?
         resolved_path = respond_to?(:asset_path, true) ? asset_path(path) : path
         url = imageboss_client(source: source)
           .path(resolved_path)

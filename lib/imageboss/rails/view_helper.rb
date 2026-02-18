@@ -17,8 +17,14 @@ module ImageBoss
       # @param srcset_options [Hash, nil] +widths:+ [Array<Integer>] or +min_width:+ and +max_width:+ for srcset
       # @param attribute_options [Hash] rename src/srcset (e.g. for lazy loading). Use tag_options[:src] as placeholder when lazy.
       # @param source [String, nil] optional source when using multi-source config
+      # Ruby 2.7: trailing hash can become keyword args; **extra absorbs them so options stay a hash.
       def imageboss_tag(path, operation, options = {}, image_opts = {}, tag_options: {}, srcset_options: nil, attribute_options: nil, source: nil, **image_tag_opts)
         tag_options = image_opts.merge(tag_options)
+        # Absorb operation options passed as keyword args (Ruby 2.7)
+        operation_keys = %i[width height options]
+        extra_opts = image_tag_opts.select { |k, _| operation_keys.include?(k) }
+        options = options.merge(extra_opts) if extra_opts.any?
+        image_tag_opts = image_tag_opts.reject { |k, _| operation_keys.include?(k) } if extra_opts.any?
         resolved_path = asset_path(path)
         url = imageboss_url(resolved_path, operation.to_sym, options, source: source)
 
@@ -27,9 +33,10 @@ module ImageBoss
           attrs = build_img_attrs(url, srcset, tag_options: tag_options, attribute_options: attribute_options, **image_tag_opts)
           content_tag(:img, nil, attrs)
         else
-          attrs = { src: url }.merge(tag_options).merge(image_tag_opts)
+          attrs = { src: url }
           attrs = apply_attribute_options(attrs, attribute_options)
           attrs[:src] = tag_options[:src] if attribute_options.present? && tag_options.key?(:src)
+          attrs = tag_options.merge(image_tag_opts).merge(attrs)
           content_tag(:img, nil, attrs)
         end
       end
