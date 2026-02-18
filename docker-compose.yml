@@ -1,0 +1,36 @@
+# Run tests locally with different Ruby versions.
+# Set RAILS_VERSION to match the Rails version you want to test (same as CI matrix).
+#
+# Examples:
+#   RAILS_VERSION=6.1.7.8 docker compose run ruby33
+#   RAILS_VERSION=8.0.2   docker compose run ruby33
+#   RAILS_VERSION=5.2.8.1 docker compose run ruby27
+#
+# Build first: docker compose build
+
+services:
+  ruby27:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        RUBY_VERSION: "2.7"
+    image: imageboss-rails-ruby27
+    volumes:
+      - .:/app
+    working_dir: /app
+    environment:
+      RAILS_VERSION: ${RAILS_VERSION:-6.1.7.8}
+
+  ruby33:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        RUBY_VERSION: "3.3"
+    image: imageboss-rails-ruby33
+    volumes:
+      - .:/app
+    working_dir: /app
+    environment:
+      RAILS_VERSION: ${RAILS_VERSION:-6.1.7.8}

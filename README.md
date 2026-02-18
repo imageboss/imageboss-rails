@@ -233,3 +233,27 @@ To run the tests:
 ```
 ./bin/test
 ```
+
+Set `RAILS_VERSION` to match the Rails version you want (e.g. `5.2.8.1`, `6.1.7.8`, `7.2.2`, `8.0.2`). See the [CI matrix](.github/workflows/ci.yml) for supported combinations.
+
+### Running tests with Docker
+You can run the test suite in Docker with Ruby 2.7 or 3.3 without installing those versions locally.
+
+Build the images (once):
+```bash
+docker compose build
+```
+
+Run tests for a given Ruby and Rails version:
+```bash
+# Ruby 3.3 + Rails 6.1 (default RAILS_VERSION in compose)
+docker compose run ruby33
+
+# Ruby 3.3 + Rails 8.0
+RAILS_VERSION=8.0.2 docker compose run ruby33
+
+# Ruby 2.7 + Rails 5.2 (Ruby 2.7 is only tested with Rails 5.2 and 6.1 in CI)
+RAILS_VERSION=5.2.8.1 docker compose run ruby27
+```
+
+Note: Rails 5.2 is not compatible with Ruby 3.x (excluded in CI). Use `ruby27` for Rails 5.2.

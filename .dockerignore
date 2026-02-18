@@ -1,0 +1,15 @@
+.git
+.gitignore
+.document
+*.md
+!README.md
+tmp
+log
+vendor/bundle
+.bundle
+*.gem
+coverage
+.cursor
+*.log
+.env*
+node_modules
