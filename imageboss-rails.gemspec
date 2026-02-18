@@ -33,4 +33,14 @@ Gem::Specification.new do |s|
   end
 
   s.add_dependency 'rails', rails
+
+  # Rails 5.2 and 6.1 LineFiltering#run expects 2 args; Minitest 6 changed to 3. Pin to 5.x.
+  if rails_version != "default" && (rails_version.start_with?("5.") || rails_version.start_with?("6.1"))
+    s.add_development_dependency "minitest", "~> 5.14"
+  end
+
+  # Silence "will no longer be part of the default gems starting from Ruby 3.4.0" warnings in CI.
+  s.add_development_dependency "bigdecimal"
+  s.add_development_dependency "mutex_m"
+  s.add_development_dependency "drb"
 end
