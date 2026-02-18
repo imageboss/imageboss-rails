@@ -50,6 +50,8 @@ services:
       - ${HOME}/.ssh:/root/.ssh:ro
     working_dir: /app
     environment:
-      # No RAILS_VERSION so gemspec uses default ">= 5.0.2" for the published gem
+      # Use Rails 8 so Gemfile gets sqlite3 >= 2.1 (compiles on Ruby 3.3). Published gem still has rails ">= 5.0.2" from gemspec.
+      RAILS_VERSION: "8.0.2"
       GEM_HOST_API_KEY: ${GEM_HOST_API_KEY}
-    command: ["sh", "-c", "bundle install && bundle exec rake release"]
+    # Unset RAILS_VERSION for rake release so the built gem has rails ">= 5.0.2" in the gemspec, not ~> 8.0.2.
+    command: ["sh", "-c", "bundle install && RAILS_VERSION= bundle exec rake release"]

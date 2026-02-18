@@ -12,8 +12,8 @@ gemspec
 
 # To use a debugger
 gem 'byebug', group: [:development, :test]
-# Ruby 3.x and Rails 8+ need sqlite3 >= 2.1 (1.4.x fails to compile on Ruby 3.3). Ruby 2.7 uses 1.4.x.
-if ENV['RAILS_VERSION']&.start_with?('8.') || (RUBY_VERSION >= '3.0')
+# Rails 8+ requires sqlite3 >= 2.1; Rails 5–7 use ~> 1.4 (Rails adapter constraint).
+if ENV['RAILS_VERSION']&.start_with?('8.')
   gem 'sqlite3', '>= 2.1', group: [:development, :test]
 else
   gem 'sqlite3', '~> 1.3', '<= 1.4.2', group: [:development, :test]
