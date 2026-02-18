@@ -17,7 +17,7 @@ class ImageBoss::Rails::SrcsetAndPictureTest < ActiveSupport::TestCase
 
   test 'imageboss_tag with srcset_options widths' do
     tag = helper.call.imageboss_tag(
-      '/assets/nice.jpg', :width, { width: 800 },
+      '/assets/nice.jpg', :width, **{ width: 800 },
       srcset_options: { widths: [320, 640, 960] },
       sizes: '100vw',
       alt: 'Responsive'
@@ -32,7 +32,7 @@ class ImageBoss::Rails::SrcsetAndPictureTest < ActiveSupport::TestCase
 
   test 'imageboss_tag with srcset_options min_width max_width' do
     tag = helper.call.imageboss_tag(
-      '/assets/nice.jpg', :width, {},
+      '/assets/nice.jpg', :width, **{},
       srcset_options: { min_width: 320, max_width: 640, width_step: 160 },
       alt: 'Range'
     )
@@ -44,7 +44,7 @@ class ImageBoss::Rails::SrcsetAndPictureTest < ActiveSupport::TestCase
 
   test 'imageboss_picture_tag with breakpoints' do
     tag = helper.call.imageboss_picture_tag(
-      '/assets/hero.jpg', :cover, { width: 800, height: 600 },
+      '/assets/hero.jpg', :cover, **{ width: 800, height: 600 },
       breakpoints: {
         '(max-width: 640px)' => { url_params: { width: 400, height: 300 } },
         '(min-width: 641px)' => { url_params: { width: 800, height: 600 } }
@@ -61,7 +61,7 @@ class ImageBoss::Rails::SrcsetAndPictureTest < ActiveSupport::TestCase
 
   test 'imageboss_tag with attribute_options for lazy loading' do
     tag = helper.call.imageboss_tag(
-      '/assets/nice.jpg', :cover, { width: 100, height: 100 },
+      '/assets/nice.jpg', :cover, **{ width: 100, height: 100 },
       attribute_options: { src: 'data-src' },
       tag_options: { src: 'placeholder.jpg' },
       alt: 'Lazy'

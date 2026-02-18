@@ -23,7 +23,7 @@ class ImageBoss::Rails::UrlHelper::Test < ActiveSupport::TestCase
 
   test '#url_helper' do
     url = helper.call.imageboss_url(
-      '/assets/nice.jpg', :cover, { width: 100, height: 100 }
+      '/assets/nice.jpg', :cover, **{ width: 100, height: 100 }
     )
 
     assert_equal('https://img.imageboss.me/mywebsite/cover/100x100/assets/nice.jpg', url)

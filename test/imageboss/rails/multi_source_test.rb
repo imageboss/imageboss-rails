@@ -24,17 +24,17 @@ class ImageBoss::Rails::MultiSourceTest < ActiveSupport::TestCase
   end
 
   test 'imageboss_url uses default_source when source not given' do
-    url = helper.call.imageboss_url('/assets/nice.jpg', :cover, { width: 100, height: 100 })
+    url = helper.call.imageboss_url('/assets/nice.jpg', :cover, **{ width: 100, height: 100 })
     assert_match(/img\.imageboss\.me\/source-a\//, url)
   end
 
   test 'imageboss_url uses given source when source: passed' do
-    url = helper.call.imageboss_url('/assets/nice.jpg', :cover, { width: 100, height: 100 }, source: 'source-b')
+    url = helper.call.imageboss_url('/assets/nice.jpg', :cover, **{ width: 100, height: 100 }, source: 'source-b')
     assert_match(/img\.imageboss\.me\/source-b\//, url)
   end
 
   test 'imageboss_tag accepts source:' do
-    tag = helper.call.imageboss_tag('/assets/nice.jpg', :cover, { width: 100, height: 100 }, source: 'source-b')
+    tag = helper.call.imageboss_tag('/assets/nice.jpg', :cover, **{ width: 100, height: 100 }, source: 'source-b')
     assert_match(/img\.imageboss\.me\/source-b\//, tag)
   end
 end

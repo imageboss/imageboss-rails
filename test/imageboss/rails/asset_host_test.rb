@@ -19,7 +19,7 @@ class ImageBoss::Rails::AssetHostTest < ActiveSupport::TestCase
       }
     end
 
-    url = helper.call.imageboss_url('/assets/nice.jpg', :cover, { width: 100, height: 100 })
+    url = helper.call.imageboss_url('/assets/nice.jpg', :cover, **{ width: 100, height: 100 })
     assert_equal('https://mycdn.com/assets/nice.jpg', url)
   end
 
@@ -28,7 +28,7 @@ class ImageBoss::Rails::AssetHostTest < ActiveSupport::TestCase
       config.imageboss = { source: 'mywebsite', enabled: false }
     end
 
-    url = helper.call.imageboss_url('/assets/nice.jpg', :cover, { width: 100, height: 100 })
+    url = helper.call.imageboss_url('/assets/nice.jpg', :cover, **{ width: 100, height: 100 })
     # Client returns path as-is when disabled
     assert_equal('/assets/nice.jpg', url)
   end
