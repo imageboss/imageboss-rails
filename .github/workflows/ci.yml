@@ -24,6 +24,9 @@ jobs:
             rails_version: '7.2.2'
           - ruby: '2.7'
             rails_version: '8.0.2'
+          # Rails 5.2 ActionDispatch::Static is incompatible with Ruby 3 (wrong number of arguments)
+          - ruby: '3.3'
+            rails_version: '5.2.8.1'
     env:
       RAILS_VERSION: ${{ matrix.rails_version }}
 

@@ -44,7 +44,7 @@ class ImageBoss::Rails::SrcsetAndPictureTest < ActiveSupport::TestCase
 
   test 'imageboss_picture_tag with breakpoints' do
     tag = helper.call.imageboss_picture_tag(
-      '/assets/hero.jpg', :cover, **{ width: 800, height: 600 },
+      '/assets/hero.jpg', :cover, { width: 800, height: 600 },
       breakpoints: {
         '(max-width: 640px)' => { url_params: { width: 400, height: 300 } },
         '(min-width: 641px)' => { url_params: { width: 800, height: 600 } }

@@ -52,7 +52,13 @@ module ImageBoss
       # @param tag_options [Hash] attributes for the <picture> element
       # @param img_tag_options [Hash] attributes for the fallback <img>
       # @param source [String, nil] optional source when using multi-source config
+      # Ruby 2.7: trailing hash can become keyword args; absorb operation keys into options.
       def imageboss_picture_tag(path, operation, options = {}, breakpoints: {}, tag_options: {}, img_tag_options: {}, source: nil, **default_tag_opts)
+        operation_keys = %i[width height options]
+        extra_opts = default_tag_opts.select { |k, _| operation_keys.include?(k) }
+        options = options.merge(extra_opts) if extra_opts.any?
+        default_tag_opts = default_tag_opts.reject { |k, _| operation_keys.include?(k) } if extra_opts.any?
+
         resolved_path = asset_path(path)
         fallback_url = imageboss_url(resolved_path, operation.to_sym, options, source: source)
 
