@@ -218,22 +218,14 @@ If you set `config.imageboss.asset_host` (e.g. `"https://mywebsite.com"`), the f
 
 ## Compatibility
 Rails
+  - 8
+  - 7
   - 6
   - 5
-  - 4
 
 Ruby
-  - 2.6.x
-  - 2.4.x
-  - 2.3.x
-  - 2.2.x
-  - 2.1.x
-
-jRuby
-  - jruby-9.0.5.x
-
-Rubinius
-  - rbx-3.x
+  - 3.x
+  - 2.7.x
 
 
 ## Developer

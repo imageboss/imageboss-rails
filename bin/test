@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
-$: << File.expand_path(File.expand_path("../../test", __FILE__))
 
+$LOAD_PATH.unshift File.expand_path("../test", __dir__)
 require "bundler/setup"
-require "rails/plugin/test"
+require "test_helper"
+Dir[File.expand_path("../test/**/*_test.rb", __dir__)].sort.each { |f| require f }

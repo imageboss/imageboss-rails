@@ -16,6 +16,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Usage in models/serializers**: Documented including `ImageBoss::Rails::UrlHelper` to call `imageboss_url` outside views.
 
 ### Changed
+- **Rails 5+ only**: Official support and CI are now Rails 5, 6, 7, 8 only. Rails 4 and below are no longer tested or supported.
 - **Client no longer memoized**: Each `imageboss_url` / tag call builds the client from current config so per-request or multi-tenant config is respected.
 - **imageboss_url** now accepts optional 4th keyword argument `source:` and supports `options` as a default empty hash.
 - **imageboss_tag** keeps backward compatibility: 4th positional arg is merged into tag options; new options are `tag_options:`, `srcset_options:`, `attribute_options:`, `source:`.
