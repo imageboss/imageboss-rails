@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.0.0] - 2025-02-18
+
 ### Added
 - **Responsive images (srcset)**: `imageboss_tag` now supports `srcset_options` with `widths` array or `min_width`/`max_width` (and optional `width_step`) to generate a `srcset` attribute.
 - **Picture tag**: `imageboss_picture_tag` for `<picture>` elements with breakpoints and different URL params per media query.
