@@ -26,13 +26,15 @@ module ImageBoss
         options = options.merge(extra_opts) if extra_opts.any?
         image_tag_opts = image_tag_opts.reject { |k, _| operation_keys.include?(k) } if extra_opts.any?
         resolved_path = asset_path(path)
-        url = imageboss_url(resolved_path, operation.to_sym, options, source: source)
-
-        if srcset_options.present? && (widths = srcset_options[:widths] || widths_from_range(srcset_options))
+        widths = srcset_options[:widths] || widths_from_range(srcset_options) if srcset_options.present?
+        if widths.present?
+          main_options = options_for_main_url(operation, options, widths)
+          url = imageboss_url(resolved_path, operation.to_sym, main_options, source: source)
           srcset = build_srcset(resolved_path, operation, options, widths, source: source)
           attrs = build_img_attrs(url, srcset, tag_options: tag_options, attribute_options: attribute_options, **image_tag_opts)
           content_tag(:img, nil, attrs)
         else
+          url = imageboss_url(resolved_path, operation.to_sym, options, source: source)
           attrs = { src: url }
           attrs = apply_attribute_options(attrs, attribute_options)
           attrs[:src] = tag_options[:src] if attribute_options.present? && tag_options.key?(:src)
@@ -72,6 +74,26 @@ module ImageBoss
       end
 
       private
+
+      def options_for_main_url(operation, options, widths)
+        opts = options.dup
+        first_w = widths.first
+        case operation.to_sym
+        when :width
+          opts[:width] = opts[:width] || first_w
+        when :height
+          opts[:height] = opts[:height] || first_w
+        when :cover
+          if !opts.key?(:width) && !opts.key?(:height)
+            opts[:width] = opts[:height] = first_w
+          elsif opts[:width] && !opts.key?(:height)
+            opts[:height] = opts[:width]
+          elsif opts[:height] && !opts.key?(:width)
+            opts[:width] = opts[:height]
+          end
+        end
+        opts
+      end
 
       def widths_from_range(srcset_options)
         min = srcset_options[:min_width]

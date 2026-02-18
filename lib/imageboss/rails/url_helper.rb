@@ -32,7 +32,8 @@ module ImageBoss
         if config[:sources].present?
           source_name = source || config[:default_source] || config[:sources].keys.first
           client_options[:source] = source_name
-          client_options[:secret] = config[:sources][source_name]
+          # imageboss-rb expects false (not nil) when no signing
+          client_options[:secret] = config[:sources][source_name] || false
         else
           client_options[:source] = config[:source]
           client_options[:secret] = config[:secret] || false
