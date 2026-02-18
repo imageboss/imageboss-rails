@@ -34,3 +34,22 @@ services:
     working_dir: /app
     environment:
       RAILS_VERSION: ${RAILS_VERSION:-6.1.7.8}
+
+  # Release: build gem, tag, push to git and RubyGems. Use after bumping version and updating CHANGELOG.
+  # Requires GEM_HOST_API_KEY and git push access (e.g. mount SSH). See RELEASING.md.
+  release:
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        RUBY_VERSION: "3.3"
+    image: imageboss-rails-ruby33
+    volumes:
+      - .:/app
+      # Mount SSH so git push works (optional if you use HTTPS with token)
+      - ${HOME}/.ssh:/root/.ssh:ro
+    working_dir: /app
+    environment:
+      # No RAILS_VERSION so gemspec uses default ">= 5.0.2" for the published gem
+      GEM_HOST_API_KEY: ${GEM_HOST_API_KEY}
+    command: ["sh", "-c", "bundle install && bundle exec rake release"]

@@ -28,6 +28,10 @@ RAILS_VERSION=6.1.7 ./bin/test
 - Add or update tests for new behavior.
 - Update the README or CHANGELOG if you change user-facing behavior.
 
+## Releasing
+
+See [RELEASING.md](RELEASING.md) for how to bump the version and publish a new release to RubyGems.org.
+
 ## Reporting issues
 
 Open an issue on GitHub with a clear description, steps to reproduce, and your environment (Ruby and Rails versions).
