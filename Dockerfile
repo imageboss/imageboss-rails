@@ -5,10 +5,10 @@ ARG RUBY_VERSION=3.3
 FROM ruby:${RUBY_VERSION}
 
 RUN apt-get update -qq && \
-    apt-get install -y build-essential libsqlite3-dev && \
+    apt-get install -y build-essential && \
     rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
 # Default: run tests (override with docker compose run ... command)
-CMD ["sh", "-c", "bundle install && (cd test/dummy && bundle exec rake db:test:prepare 2>/dev/null || true) && cd /app && bin/test"]
+CMD ["sh", "-c", "bundle install && bin/test"]
