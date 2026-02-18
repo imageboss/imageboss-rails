@@ -17,11 +17,13 @@ module ImageBoss
         Sprockets::Context.send :include, UrlHelper if defined? Sprockets
       end
 
-      # Include after ActionView::Base is fully initialized so we don't trigger
-      # "class variable @@debug_missing_translation of ActionView::Base is overtaken by ..."
-      # on Ruby 3.2+ with Rails 5.2.
-      config.to_prepare do
-        ActionView::Base.include(ImageBoss::Rails::ViewHelper)
+      # Register our on_load(:action_view) in after_initialize so we run *after* ActionView's
+      # on_load block (which sets @@debug_missing_translation etc.). That avoids
+      # "class variable ... is overtaken by ImageBoss::Rails::UrlHelper" on Ruby 3.2+.
+      config.after_initialize do
+        ActiveSupport.on_load(:action_view) do
+          ActionView::Base.include(ImageBoss::Rails::ViewHelper)
+        end
       end
     end
   end
